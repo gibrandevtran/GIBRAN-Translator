@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gibran Banhakeia |Translator & Tech-Translation Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --pink: #ff2d55;
+            --blue: #00d4ff;
+            --deep-navy: #020617;
+            --card-bg: rgba(15, 23, 42, 0.4);
+            --border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, var(--pink) 0%, var(--blue) 100%);
+            --radius: 36px;
+        }
+
+        * { box-sizing: border-box; transition: all 0.4s cubic-bezier(0.15, 0.85, 0.35, 1); }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--deep-navy);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 100px 24px;
+            font-size: 18px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- HYPER-ANIMATED BACKGROUND --- */
+        .bg-container {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--deep-navy);
+        }
+
+        .orb {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.25;
+            animation: orbit 25s infinite linear;
+        }
+
+        .orb-pink { background: var(--pink); top: -200px; left: -100px; animation-duration: 30s; }
+        .orb-blue { background: var(--blue); bottom: -200px; right: -100px; animation-duration: 25s; animation-direction: reverse; }
+        .orb-purple { background: #8b5cf6; top: 40%; left: 30%; width: 600px; animation-duration: 40s; opacity: 0.15; }
+
+        @keyframes orbit {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            33% { transform: translate(150px, 100px) rotate(120deg) scale(1.1); }
+            66% { transform: translate(-100px, 200px) rotate(240deg) scale(0.9); }
+            100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+        }
+
+        /* --- CONTENT GRID --- */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 30px;
+            max-width: 1450px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 50px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--blue);
+            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.6), 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+
+        /* --- PROFILE MODULE --- */
+        .hero-cell {
+            grid-column: span 4;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: linear-gradient(135deg, rgba(255, 45, 85, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+        }
+        .avatar-frame {
+            position: relative;
+            width: 220px; height: 220px;
+        }
+        .avatar-frame::before {
+            content: ''; position: absolute; inset: -5px;
+            background: var(--gradient); border-radius: 65px; z-index: -1;
+            animation: pulse 4s infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+        .avatar {
+            width: 100%; height: 100%;
+            border-radius: 60px;
+            object-fit: cover;
+            border: 4px solid var(--deep-navy);
+        }
+
+        .hero-text h1 {
+            font-size: 65px; font-weight: 800; margin: 0;
+            letter-spacing: -4px; line-height: 0.9;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .role-badge {
+            display: inline-block; margin-top: 20px;
+            padding: 10px 25px; background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--blue); color: var(--blue);
+            border-radius: 100px; font-size: 14px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 4px;
+        }
+
+        /* --- CONTACT --- */
+        .contact-cell {
+            grid-column: span 2;
+            display: flex; flex-direction: column; justify-content: center; gap: 25px;
+        }
+        .contact-link {
+            display: flex; align-items: center; gap: 20px;
+            color: var(--text-muted); text-decoration: none; font-size: 16px; font-weight: 600;
+        }
+        .contact-link i {
+            width: 55px; height: 55px;
+            background: var(--gradient); border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 22px;
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+        }
+
+        /* --- LINGUISTICS --- */
+        .lang-cell { grid-column: span 6; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .lang-stat h5 { margin: 0 0 12px 0; font-size: 14px; font-weight: 800; display: flex; justify-content: space-between; letter-spacing: 1px; }
+        .bar-bg { height: 10px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--gradient); box-shadow: 0 0 15px var(--blue); }
+
+        /* --- CAREER --- */
+        .timeline-cell { grid-column: span 3; }
+        .sec-title {
+            font-size: 14px; font-weight: 800; color: var(--pink);
+            text-transform: uppercase; letter-spacing: 5px; margin-bottom: 45px;
+            display: flex; align-items: center; gap: 20px;
+        }
+        .sec-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+
+        .exp-item { margin-bottom: 50px; position: relative; padding-left: 30px; border-left: 2px solid rgba(255,255,255,0.1); }
+        .exp-item:hover { border-left-color: var(--blue); }
+        .exp-date { font-size: 13px; font-weight: 800; color: var(--blue); margin-bottom: 10px; display: block; }
+        .exp-item h3 { font-size: 24px; margin: 0; color: white; letter-spacing: -0.5px; }
+        .exp-item .comp { font-size: 14px; font-weight: 700; color: var(--pink); margin: 5px 0 15px 0; display: block; text-transform: uppercase; }
+        .exp-list { padding-left: 20px; color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+
+        /* --- SOFTWARE --- */
+        .software-cell { grid-column: span 3; }
+        .soft-cat { margin-bottom: 35px; }
+        .soft-cat h4 { font-size: 16px; color: white; margin: 0 0 18px 0; display: flex; align-items: center; gap: 12px; }
+        .soft-cat h4 i { color: var(--blue); }
+        .pill-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill {
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+            padding: 10px 18px; border-radius: 15px; font-size: 13px; font-weight: 700; color: var(--text-muted);
+        }
+        .pill:hover { border-color: var(--pink); color: white; background: rgba(255, 45, 85, 0.1); transform: scale(1.05); }
+
+        footer {
+            grid-column: span 6; text-align: center; padding: 60px 0;
+            font-size: 13px; font-weight: 800; color: var(--text-muted); letter-spacing: 6px; opacity: 0.6;
+        }
+
+        @media (max-width: 1200px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .hero-cell, .contact-cell, .timeline-cell, .software-cell, .lang-cell { grid-column: span 1; }
+            .lang-cell { grid-template-columns: 1fr; }
+        }
+          /* --- EDUCATION (NEW SECTION) --- */
+        .edu-cell { grid-column: span 6; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .edu-box { 
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border); 
+            padding: 30px; border-radius: 25px; position: relative;
+        }
+        .edu-box:hover { border-color: var(--blue); background: rgba(0, 212, 255, 0.05); }
+        .edu-box i { font-size: 24px; color: var(--pink); margin-bottom: 20px; display: block; }
+        .edu-box h4 { margin: 0 0 8px 0; font-size: 18px; color: #fff; }
+        .edu-box p { margin: 0; font-size: 14px; color: var(--text-muted); font-weight: 600; }
+        .edu-box .location { color: var(--blue); text-transform: uppercase; letter-spacing: 1px; font-size: 11px; margin-top: 10px; display: block; }
+
+        footer { grid-column: span 6; text-align: center; padding: 60px 0; font-size: 13px; font-weight: 800; color: var(--text-muted); letter-spacing: 6px; opacity: 0.6; }
+
+        @media (max-width: 1200px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .hero-cell, .contact-cell, .timeline-cell, .software-cell, .edu-cell { grid-column: span 1; }
+            .edu-cell { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ANIMATED NEBULA BACKGROUND -->
+    <div class="bg-container">
+        <div class="orb orb-pink"></div>
+        <div class="orb orb-blue"></div>
+        <div class="orb orb-purple"></div>
+    </div>
+
+    <div class="bento-grid">
+        
+        <!-- PROFILE SECTION -->
+        <div class="glass-card hero-cell">
+            <div class="avatar-frame">
+                <img src="https://assets.about.me/background/users/g/i/b/gibranbanhakeia_1750736753_845.jpg" alt="GIBRAN" class="avatar">
+            </div>
+            <div class="hero-text">
+                <h1>GIBRAN<br>BANHAKEIA</h1>
+                <span class="role-badge">Translator & Tech-Translation Specialist</span>
+            </div>
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <div class="glass-card contact-cell">
+            <a href="tel:+212727833965" class="contact-link"><i class="fa fa-phone"></i> +212 727 833 965</a>
+            <a href="mailto:gibrandevtran@gmail.com" class="contact-link"><i class="fa fa-envelope"></i> gibrandevtran@gmail.com</a>
+            <div class="contact-link"><i class="fa fa-map-marker-alt"></i> Global (Remote) | MA | FR | US</div>
+        </div>
+
+        <!-- LINGUISTICS DASHBOARD -->
+        <div class="glass-card lang-cell">
+            <div class="lang-stat">
+                <h5><span>ARABIC / BERBER</span><span>100%</span></h5>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="lang-stat">
+                <h5><span>ENGLISH / FRENCH</span><span>95%</span></h5>
+                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
+            </div>
+            <div class="lang-stat">
+                <h5><span>SPANISH</span><span>80%</span></h5>
+                <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
+            </div>
+        </div>
+
+        <!-- EXPERIENCE TIMELINE -->
+        <div class="glass-card timeline-cell">
+            <div class="sec-title">EXPERIENCE</div>
+            
+            <div class="exp-item">
+                <span class="exp-date">2024 — 2025</span>
+                <h3>Arabic Translator (USAID)</h3>
+                <span class="comp">CCI Group of Translation | Florida, USA</span>
+                <ul class="exp-list">
+                    <li>Localization engineering for <b>USAID</b> international assets.</li>
+                    <li>Contextual audits for high-stakes government communications.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <span class="exp-date">2021 — 2024</span>
+                <h3>Arabic Translator & Front Developer </h3>
+                <span class="comp">Proton VPN | Switzerland</span>
+                <ul class="exp-list">
+                    <li>Pioneered Arabic entry for the global privacy ecosystem.</li>
+                    <li>Developed custom <b>RTL UI Frameworks</b> in React & Vue.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <span class="exp-date">2018 — 2024</span>
+                <h3> Polyglot Translator & Front Developer</h3>
+                <span class="comp">Translation Documents | Paris, France</span>
+                <ul class="exp-list">
+                    <li>Engineered secure client portals for international legal litigation.</li>
+                    <li>Managed multilingual technical translation flows for law firms.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SOFTWARE ECOSYSTEM -->
+        <div class="glass-card software-cell">
+            <div class="sec-title">Software Skills </div>
+            
+            <div class="soft-cat">
+                <h4><i class="fa fa-brain"></i> Intelligence & OSINT</h4>
+                <div class="pill-wrap">
+                    <span class="pill">Cybersecurity</span><span class="pill">Maltego</span>
+                    <span class="pill">OSINT Framework</span><span class="pill">MindX</span><span class="pill">VR OSINT</span>
+                </div>
+            </div>
+
+            <div class="soft-cat">
+                <h4><i class="fa fa-language"></i> CAT & Engineering</h4>
+                <div class="pill-wrap">
+                    <span class="pill">Trados Studio</span><span class="pill">MemoQ</span>
+                    <span class="pill">OmegaT</span><span class="pill">Systran</span><span class="pill">i18n Engineering</span>
+                </div>
+            </div>
+
+            <div class="soft-cat">
+                <h4><i class="fa fa-code-branch"></i> Systems & Dev</h4>
+                <div class="pill-wrap">
+                    <span class="pill">VS Code</span><span class="pill">React / Vue</span>
+                    <span class="pill">Git / GitHub</span><span class="pill">FileZilla</span><span class="pill">TightVNC</span>
+                </div>
+            </div>
+
+            <div class="soft-cat">
+                <h4><i class="fa fa-closed-captioning"></i> Translation & Subtitling</h4>
+                <div class="pill-wrap">
+                    <span class="pill">Aegisub</span><span class="pill">Subtitle Edit</span>
+                    <span class="pill">CineTranslate</span><span class="pill">Transcribe v4</span><span class="pill">Prompt Expert N16</span><span class="pill">Subtitle Translator</span>
+                </div>
+            </div>
+
+            <div class="soft-cat">
+                <h4><i class="fa fa-microchip"></i> Productivity</h4>
+                <div class="pill-wrap">
+                    <span class="pill">Expert PDF 15</span><span class="pill">Gimp 3</span>
+                    <span class="pill">ShareX</span><span class="pill">Teracopy</span><span class="pill">Lunchy</span>
+                </div>
+            </div>
+        </div>
+
+      <!-- EDUCATION SECTION -->
+        <div class="glass-card edu-cell">
+            <div style="grid-column: span 3;"><div class="sec-title">Academic Pathway</div></div>
+            
+            <div class="edu-box">
+                <i class="fa fa-graduation-cap"></i>
+                <h4>Master of Arts (MA)</h4>
+                <p>Foreign Languages & Comparative Studies </p>
+                <span class="location">University of Paris. Paris, France</span>
+            </div>
+
+            <div class="edu-box">
+                <i class="fa fa-university"></i>
+                <h4>Master of Arts (MA)</h4>
+                <p>Translation and Literature  </p>
+                <span class="location">FPN Faculty of Nador. Nador, Morocco</span>
+            </div>
+
+            <div class="edu-box">
+                <i class="fa fa-book"></i>
+                <h4>Bachelor of Arts (BA)</h4>
+                <p>English Studies </p>
+                <span class="location">MOHAMED FIRST UNIVERSITY.Oujda, Morocco</span>
+            </div>
+        </div>
+
+        <footer>
+            GIBRAN BANHAKEIA &bull; Translator & Tech-Translation Specialist &bull; &copy; 2025
+        </footer>
+
+
+    </div>
+
+</body>
+</html>
